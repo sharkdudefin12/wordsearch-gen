@@ -1,154 +1,140 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f8ff; /* Light blue background */
 }
 
 .container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 1000px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 95%; /* Adjusted width */
+  max-width: 1200px;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #343a40;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #343a40;
 }
 
 .grid-container {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .puzzle-section,
 .solution-section {
-    flex: 1;
-    min-width: 300px;
-    /* Ensure they don't shrink too much */
-    margin: 10px;
-    position: relative;
-    /* For absolute positioning of download button */
+  flex: 1;
+  min-width: 450px; /* Further increased min width */
+  margin: 10px;
+  position: relative;
 }
 
 .input-section {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 label {
-    display: block;
-    margin-bottom: 8px;
-    color: #495057;
+  display: block;
+  margin-bottom: 8px;
+  color: #495057;
 }
 
 input[type="text"],
 input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
 button {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-right: 10px;
-    transition: background-color 0.3s ease;
+  background-color: #3498db; /* Blue */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px; /* Less rounded */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #2980b9; /* Darker blue on hover */
 }
 
 table {
-    border-collapse: collapse;
-    margin: 0 auto;
-    border: 2px solid black;
-    /* Black border around the table */
+  border-collapse: collapse;
+  margin: 0 auto;
+  border: none; /* Removed table border */
 }
 
 td {
-    border: 1px solid #ddd;
-    /* Light gray lines between letters */
-    width: 35px;
-    height: 35px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 8px;
-    /* Rounded corners for cells */
-    background-color: transparent;
-    /* Ensure cells are transparent */
+  border: 1px solid #ddd;
+  width: 28px; /* Further adjusted width */
+  height: 28px; /* Further adjusted height */
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 3px; /* Further adjusted border radius */
+  background-color: transparent;
 }
 
 .word-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 0;
-    /* Remove the gap between the grid and word list */
-    padding: 5px;
-    /* Reduce padding */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 5px;
 }
 
 .word-item {
-    background-color: #fff;
-    color: #495057;
-    font-size: 14px;
-    /* Reduced font size */
-    font-weight: bold;
-    display: inline-block;
-    margin: 2px;
-    /* Reduce margin */
-    border: 2px solid #ced4da;
-    /* Square frame */
-    padding: 2px;
-    /* Reduce padding */
-    border-radius: 0;
-    /* No rounded corners */
-    text-align: center;
-    min-width: 60px;
-    /* Reduced minimum width */
+  background-color: #fff;
+  color: #495057;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid #ced4da;
+  padding: 5px;
+  border-radius: 4px;
+  text-align: center;
+  min-width: 80px;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 15px;
-    color: #343a40;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #343a40;
 }
 
 .download-section {
-    text-align: center;
-    margin-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .grid-container {
-        flex-direction: column;
-        /* Stack grids vertically on smaller screens */
-    }
+  .grid-container {
+    flex-direction: column;
+  }
 
-    .puzzle-section,
-    .solution-section {
-        width: 90%;
-        margin: 10px auto;
-    }
+  .puzzle-section,
+  .solution-section {
+    width: 90%;
+    margin: 10px auto;
+  }
 }

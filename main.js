@@ -32,7 +32,7 @@ document.getElementById('generate').addEventListener('click', () => {
     }
     try {
         const { puzzle, solution, wordPositions } = generateWordSearch(words, size);
-        displayPuzzle(puzzle, 'puzzle-grid');
+        displayPuzzle(puzzle, 'puzzle-grid', size);
         displaySolution(solution, 'solution-grid', wordPositions);
         displayWords(words);
         document.querySelector('.solution-section').style.display = 'block';
@@ -42,7 +42,7 @@ document.getElementById('generate').addEventListener('click', () => {
 
 });
 
-function displayPuzzle(grid, elementId) {
+function displayPuzzle(grid, elementId, size = 10) {
     const table = document.getElementById(elementId);
     table.innerHTML = '';
 
@@ -51,6 +51,9 @@ function displayPuzzle(grid, elementId) {
         for (let j = 0; j < grid[i].length; j++) {
             const cell = row.insertCell();
             cell.textContent = grid[i][j] || '';
+            // Adjust width based on grid size
+            cell.style.width = `${350 / size}px`;
+            cell.style.height = `${350 / size}px`;
         }
     }
 }
@@ -99,6 +102,7 @@ function displayWords(words) {
 document.getElementById('download-puzzle').addEventListener('click', () => {
     const puzzleContainer = document.getElementById('puzzle-container'); // Target the container
     // Temporarily change background color to white
+    puzzleContainer.style.backgroundColor = 'white';
     const cells = puzzleContainer.querySelectorAll('#puzzle-grid td');
     const originalBackgrounds = Array.from(cells).map(cell => cell.style.backgroundColor); // Store original backgrounds
     cells.forEach(cell => {
@@ -107,6 +111,7 @@ document.getElementById('download-puzzle').addEventListener('click', () => {
 
     downloadSection(puzzleContainer, 'word-search-puzzle.png', () => {
         // Revert background color to transparent after download
+        puzzleContainer.style.backgroundColor = '';
         cells.forEach((cell, index) => {
             cell.style.backgroundColor = originalBackgrounds[index] || ''; // Revert to original or default
         });
