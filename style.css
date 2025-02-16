@@ -1,0 +1,141 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+
+  .container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1000px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #343a40;
+  }
+
+  .grid-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .puzzle-section, .solution-section {
+    flex: 1;
+    min-width: 300px; /* Ensure they don't shrink too much */
+    margin: 10px;
+    position: relative; /* For absolute positioning of download button */
+  }
+
+  .input-section {
+    margin-bottom: 30px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #495057;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+
+  td {
+    border: 2px solid #dee2e6;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px; /* Rounded corners for cells */
+  }
+
+.word-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f8f9fa;
+}
+
+.word-item {
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #495057;
+    font-size: 14px;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    margin: 5px;
+    border: 1px solid #ced4da;
+}
+
+.word-item input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+  h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #343a40;
+  }
+
+  .download-section {
+      text-align: center;
+      margin-top: 10px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .grid-container {
+      flex-direction: column; /* Stack grids vertically on smaller screens */
+    }
+
+    .puzzle-section, .solution-section {
+        width: 90%;
+        margin: 10px auto;
+    }
+  }
