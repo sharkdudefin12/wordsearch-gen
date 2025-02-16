@@ -51,7 +51,6 @@ function displayPuzzle(grid, elementId) {
         for (let j = 0; j < grid[i].length; j++) {
             const cell = row.insertCell();
             cell.textContent = grid[i][j] || '';
-            cell.style.backgroundColor = ''; // Remove any highlighting
         }
     }
 }
@@ -92,38 +91,47 @@ function displayWords(words) {
     words.forEach(word => {
         const wordItem = document.createElement('div');
         wordItem.classList.add('word-item');
-
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `checkbox-${word}`;
-
-        const label = document.createElement('label');
-        label.htmlFor = `checkbox-${word}`;
-        label.textContent = word;
-
-        wordItem.appendChild(checkbox);
-        wordItem.appendChild(label);
+        wordItem.textContent = word;
         wordListDiv.appendChild(wordItem);
     });
 }
 
 document.getElementById('download-puzzle').addEventListener('click', () => {
     const puzzleContainer = document.getElementById('puzzle-container'); // Target the container
-    downloadSection(puzzleContainer, 'word-search-puzzle.png');
+    // Temporarily change background color to white
+    const cells = puzzleContainer.querySelectorAll('#puzzle-grid td');
+    cells.forEach(cell => {
+        cell.style.backgroundColor = 'white';
+    });
+
+    downloadSection(puzzleContainer, 'word-search-puzzle.png', () => {
+        // Revert background color to transparent after download
+        cells.forEach(cell => {
+            cell.style.backgroundColor = 'transparent';
+        });
+    });
 });
 
 document.getElementById('download-solution').addEventListener('click', () => {
     const solutionSection = document.querySelector('.solution-section');
-    downloadSection(solutionSection, 'word-search-solution.png');
+    const downloadButton = solutionSection.querySelector('.download-section');
+    downloadButton.style.display = 'none'; // Hide the download button
+
+    downloadSection(solutionSection, 'word-search-solution.png', () => {
+        downloadButton.style.display = 'block'; // Show the download button again
+    });
 });
 
-function downloadSection(section, filename) {
+function downloadSection(section, filename, callback) {
     domtoimage.toPng(section)
         .then(function (dataUrl) {
             const link = document.createElement('a');
             link.download = filename;
             link.href = dataUrl;
             link.click();
+            if (callback) {
+                callback();
+            }
         })
         .catch(function (error) {
             console.error('Error generating image:', error);

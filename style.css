@@ -87,7 +87,8 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 8px; /* Rounded corners for cells */
-  }
+    background-color: transparent; /* Ensure cells are transparent */
+}
 
 .word-list {
   display: flex;
@@ -102,19 +103,16 @@ body {
 
 .word-item {
     background-color: #fff;
-    padding: 8px 12px;
-    border-radius: 8px;
     color: #495057;
-    font-size: 14px;
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Center items vertically */
+    font-size: 20px; /* Increased font size */
+    font-weight: bold; /* Bold font weight */
+    display: inline-block;
     margin: 5px;
-    border: 1px solid #ced4da;
-}
-
-.word-item input[type="checkbox"] {
-    margin-right: 8px;
-    cursor: pointer;
+    border: 2px solid #ced4da; /* Square frame */
+    padding: 5px; /* Add some padding inside the frame */
+    border-radius: 0; /* No rounded corners */
+    text-align: center; /* Center the text */
+    min-width: 80px; /* Minimum width for each word */
 }
 
   h2 {
