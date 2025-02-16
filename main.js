@@ -56,32 +56,32 @@ function displayPuzzle(grid, elementId) {
 }
 
 function displaySolution(grid, elementId, wordPositions) {
-  const table = document.getElementById(elementId);
-  table.innerHTML = '';
+    const table = document.getElementById(elementId);
+    table.innerHTML = '';
 
-  for (let i = 0; i < grid.length; i++) {
-    const row = table.insertRow();
-    for (let j = 0; j < grid[i].length; j++) {
-      const cell = row.insertCell();
-      cell.textContent = grid[i][j] || '';
+    for (let i = 0; i < grid.length; i++) {
+        const row = table.insertRow();
+        for (let j = 0; j < grid[i].length; j++) {
+            const cell = row.insertCell();
+            cell.textContent = grid[i][j] || '';
 
-      // Apply styling for word positions
-      for (const word in wordPositions) {
-        if (wordPositions.hasOwnProperty(word)) {
-          const positions = wordPositions[word];
-          const colorIndex = Object.keys(wordPositions).indexOf(word) % colors.length;
-          const cellColor = colors[colorIndex];
+            // Apply styling for word positions
+            for (const word in wordPositions) {
+                if (wordPositions.hasOwnProperty(word)) {
+                    const positions = wordPositions[word];
+                    const colorIndex = Object.keys(wordPositions).indexOf(word) % colors.length;
+                    const cellColor = colors[colorIndex];
 
-          for (const pos of positions) {
-            if (pos.row === i && pos.col === j) {
-              cell.style.backgroundColor = cellColor;
-              cell.style.color = 'white';
+                    for (const pos of positions) {
+                        if (pos.row === i && pos.col === j) {
+                            cell.style.backgroundColor = cellColor;
+                            cell.style.color = 'white';
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }
 
 function displayWords(words) {
@@ -100,14 +100,15 @@ document.getElementById('download-puzzle').addEventListener('click', () => {
     const puzzleContainer = document.getElementById('puzzle-container'); // Target the container
     // Temporarily change background color to white
     const cells = puzzleContainer.querySelectorAll('#puzzle-grid td');
+    const originalBackgrounds = Array.from(cells).map(cell => cell.style.backgroundColor); // Store original backgrounds
     cells.forEach(cell => {
         cell.style.backgroundColor = 'white';
     });
 
     downloadSection(puzzleContainer, 'word-search-puzzle.png', () => {
         // Revert background color to transparent after download
-        cells.forEach(cell => {
-            cell.style.backgroundColor = 'transparent';
+        cells.forEach((cell, index) => {
+            cell.style.backgroundColor = originalBackgrounds[index] || ''; // Revert to original or default
         });
     });
 });
